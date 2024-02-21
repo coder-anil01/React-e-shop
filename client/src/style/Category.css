@@ -1,0 +1,102 @@
+.admin-heading-h3{
+    text-align: center;
+}
+.admin-category-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-category-form{
+    width: 400px;
+    
+}
+.admin-category-input{
+    padding:10px 20px;
+    margin: 10px auto;
+    border-radius: 20px;
+    border: 1px solid green;
+    width: 250px;
+}
+.admin-category-image-upload-area{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 20px auto;
+    border: 3px dotted green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    cursor: pointer;
+}
+.admin-category-image-upload{
+    width: 100%;
+    object-fit: contain;
+}
+.admin-category-upload-icon{
+    font-size: 30px;
+}
+.admin-category-upload-img-text{
+    font-weight: 800;
+}
+.admin-create-submit{
+    margin: 20px auto;
+    border: none;
+    padding: 10px 80px;
+    font-size: 17px;
+    border-radius: 20px;
+    background-color: #94ed94;
+    color: green;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+}
+
+/* SHOW CATEGORIES */
+.admin-show-category{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+.admin-show-category-card{
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #94ed94;
+    border-radius: 10px;
+}
+.admin-show-category-image{
+    width: 100%;
+}
+.admin-show-category-icon{
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
+.admin-show-category-icon div{
+    cursor: pointer;
+    padding: 10px 20px ;
+    font-size: 18px;
+}
+.admin-show-category-name{}
+
+/* UPDATE */
+.admin-category-update{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e7e7e798;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 50px 0;
+}
+.admin-category-update-close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 35px;
+    padding: 5px;
+    cursor: pointer;
+}

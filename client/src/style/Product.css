@@ -1,0 +1,84 @@
+ .admin-add-item{
+    /* background-color: pink; */
+    width: 100%;
+ }
+ .admin-add-item-form{
+    padding: 0 5vw;
+    /* background-color: aqua; */
+ }
+ .admin-add-item-wrap-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+ }
+ .admin-add-item-card{
+    margin: 15px 0;
+ }
+ .admin-add-item-lable{}
+ .admin-add-item-select,
+ .admin-add-item-input{
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 2px solid green;
+    margin: 5px 0;
+    width: 70%;
+ }
+ .w-100{
+    width: 100%;
+ }
+
+ .admin-add-item-card{}
+ .admin-add-item-lable{}
+ .admin-add-item-select{}
+ .admin-add-item-bullet-icon{
+   text-align: center;
+   font-size: 30px;
+   cursor: pointer;
+   color: green;
+ }
+
+ .admin-add-item-image-post{
+    border: 3px dotted green;
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: green;
+    cursor: pointer;
+ }
+ .admin-add-item-image-text{
+    text-align: center;
+ }
+ .admin-add-item-image-icon{
+    font-size: 35px;
+ }
+ .admin-add-item-image-stop-icon{
+    color: red !important;
+    font-size: 60px;
+ }
+ .admin-add-item-image-text{}
+
+ .admin-add-item-prev-img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+
+ }
+ .admin-add-item-prev-img-delete{
+    font-size: 25px;
+    color: red;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+ }
+ .admin-add-item-prev-img-card{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+ }
