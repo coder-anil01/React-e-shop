@@ -1,21 +1,19 @@
 import cartModel from "../model/cartModel.js";
 
 export const cartAdd = async(req, res) => {
-    const {product, user, quantity} = req.body;
-    console.log(product, user, quantity);
+    const {user, product, quantity} = req.body;
+    console.log(user, product, quantity);
     try {
-        const cart = await cartModel({product, user, quantity}).save();
+        const cart = await new cartModel({user, product, quantity}).save();
         res.status(200).send({
             success: true,
             cart,
         });
     } catch (error) {
-        console.log(error);
         res.status(500).send({
             success: false,
-            message: "Internal server error",
-            error,
-          });
+            message: "Internal Server Error",
+        })
     }
 }
 

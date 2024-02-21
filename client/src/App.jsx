@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './pages/ProductDetails'
 import Login from './component/Login'
+import ScrollToTop from './component/ScrollToTop'
 
 const App = () => {
   <ToastContainer
@@ -22,6 +23,7 @@ const App = () => {
       <Router>
         <Navbar/>
         <ToastContainer />
+        <ScrollToTop/>
         <Routes>
           <Route path='/' element={<Homepage/>}/>
           <Route path='/product/:id' element={<ProductDetails/>}/>

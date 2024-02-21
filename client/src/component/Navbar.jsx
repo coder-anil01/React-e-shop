@@ -5,9 +5,15 @@ import { BsCartCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import '../style/Navbar.css'
 import { FaSearch } from "react-icons/fa";
+import LoginModel from './LoginModel';
 
 const Navbar = () => {
   const [menuopen, setMenuopen] = useState(false);
+  const [loginModel, setLoginModel] = useState(false);
+
+  const receiveDataFromChild = (data) => {
+    setLoginModel(data);
+  };
   return (
     <>
     <div className='navbar'>
@@ -20,7 +26,7 @@ const Navbar = () => {
         <div className='navbar-item-card'>
             <NavLink to='/cart'><BsCartCheckFill/></NavLink>
             <NavLink to='/cart'><FaHeart/></NavLink>
-            <div>Login / Signup</div>
+            <div onClick={()=>setLoginModel(true)}>Login / Signup</div>
         </div>
         {menuopen ? <>
           <div className='navbar-menu-close' onClick={() => setMenuopen(false)}>
@@ -46,6 +52,7 @@ const Navbar = () => {
   </div>}
     
     <div className='navbar-buttom'></div>
+    {loginModel && <LoginModel handleSend={receiveDataFromChild}/>}
     </>
   )
 }

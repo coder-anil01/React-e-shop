@@ -1,0 +1,101 @@
+.login{
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login-liner{
+    background-color: #ff18bd;
+    padding: 5px;
+    border-radius: 10px;
+}
+.login-fomrm-cross{
+    position: absolute;
+    color: black;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+.login-container{
+    width: 40vw;
+    min-width: 400px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 20px;
+}
+
+
+.radioButtonGroup{
+    display: flex;
+    width: 100%;
+    background-color: #0e193f;
+    border-radius: 10px;
+}
+.radioButton{
+    border: none;
+    width: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 10px;
+    font-weight: 300;
+    background-color: #0e193f;
+    color: #ff18bd;
+}
+.radioButton.selected{
+    background-color: #ff18bd;
+    color: #0e193f;
+    font-weight: 800;
+}
+.radioButton:hover{}
+
+
+
+.login-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.login-form-heading{
+    font-size: 35px;
+    color: #0e193f;
+}
+.login-form-items{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    padding: 0 10px;
+}
+.login-form-icon{
+    position: absolute;
+    color: black;
+    font-size: 23px;
+}
+.login-form-input{
+    padding: 10px 10px 10px 30px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    fill: none;
+    background: transparent;
+}
+.login-form-submit{
+    background-color: #0e193f;
+    color: #ff18bd;
+    border: none;
+    padding: 15px 100px;
+    margin-top: 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}

@@ -62,9 +62,18 @@
     background-color: #e6e4e4;
     padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
     box-shadow: 0 0 4px 2px #707070;
     text-decoration: none;
+}
+.homepage-item-icons{
+    display: flex;
+    justify-content: space-between;
+    color: green;
+}
+.homepage-item-icons div{
+    font-size: 20px;
+    padding: 8px;
+    cursor: pointer;
 }
 .homepage-item-image{
     width: 100%;

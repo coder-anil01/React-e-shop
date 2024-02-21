@@ -91,7 +91,7 @@ export const editCategory = async(req, res) => {
     }
 }
 
-//*************  UPDATE   *************//
+//*************  DELETE   *************//
 export const deleteCategory = async(req, res) => {
     const {id} = req.params;
     try {

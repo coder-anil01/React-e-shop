@@ -57,11 +57,29 @@ export const getAllProduct = async(req, res) => {
     }
 }
 
-// GET ALL PRODUCT
+// GET SINGLE PRODUCT
 export const getSingleProduct = async(req, res) => {
     const {id} = req.params;
     try {
         const product = await productModel.findById(id);
+        res.status(200).send({
+            success: true,
+            product,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({
+            success: false,
+            message: "Internal server error",
+            error,
+          });
+    }
+}
+// GET SINGLE PRODUCT
+export const getReletedProduct = async(req, res) => {
+    const {cid, pid} = req.params;
+    try {
+        const product = await productModel.find({category:cid, _id: {$ne: pid}});
         res.status(200).send({
             success: true,
             product,
