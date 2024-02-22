@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import ProductDetails from './pages/ProductDetails'
 import Login from './component/Login'
 import ScrollToTop from './component/ScrollToTop'
+import Cart from './pages/Cart'
 
 const App = () => {
   <ToastContainer
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/' element={<Homepage/>}/>
           <Route path='/product/:id' element={<ProductDetails/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/cart' element={<Cart/>}/>
 
 {/* ADMIN */}
           <Route path='/admin' element={<Admin/>}>

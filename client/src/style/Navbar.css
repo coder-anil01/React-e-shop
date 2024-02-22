@@ -47,6 +47,19 @@
     padding: 15px 20px;
     color: green !important;
     font-size: 25px;
+    text-decoration: none;
+}
+.navbar-item-card-notification{
+    font-size: 15px;
+    background-color: red;
+    padding: 1px 5px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 50%;
+    position: relative;
+    bottom: 20px;
+    right: 10px;
 }
 .navbar-item-card div{
     background-color: green;
