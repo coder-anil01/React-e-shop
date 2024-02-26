@@ -4,17 +4,16 @@ import { RiAddFill, RiSubtractFill } from "react-icons/ri";
 import { useAuth } from '../context/AuthProvider';
 import '../style/Cart.css';
 import { MdDelete } from "react-icons/md";
+import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
-    const [auth] = useAuth();
+    const [auth, setAuth] = useAuth();
     const [products, setProducts] = useState([]);
-    const [totalItem, setTotalItem] = useState('');
 
     const getCart = async()=> {
         try {
             const {data} = await axios.post('/api/v1/cart/get', {user: auth?.user?._id});
             setProducts(data.cart);
-            setTotalItem(data.total);
         } catch (error) {
             console.log(error);
         }
@@ -49,6 +48,9 @@ const Cart = () => {
     const deleteCartItem = async(id) => {
         try {
             const {data} = await axios.post(`/api/v1/cart/delete/${id}`)
+            if(data.success){
+                setAuth({ ...auth, cart: auth?.cart-1 })
+            }
             getCart();
         } catch (error) {
             console.log(error);
@@ -58,7 +60,7 @@ const Cart = () => {
   return (
     <>
     <div className="cart">
-        <h2 className="cart-heading">{totalItem} Items in your Cart</h2>
+        <h2 className="cart-heading">{auth?.cart} Items in your Cart</h2>
         <div className="cart-container">
             <div className="cart-items">
                 {products?.map((p)=>(
@@ -80,7 +82,7 @@ const Cart = () => {
                 <h3 className='cart-checkout-heading'>Cart Summary</h3>
                 <div className="cart-checkout-container">
                     <div className='cart-checkout-items'>
-                        <div>{totalItem} Item</div> <strong>999</strong>
+                        <div>{auth?.cart} Item</div> <strong>999</strong>
                     </div>
                     <div className='cart-checkout-items'>
                         <div>Shipping Charge</div> <strong>Free</strong>
@@ -89,7 +91,9 @@ const Cart = () => {
                     <div className='cart-checkout-items-total'>
                         <strong>TOTAL</strong> <strong>{totalPrice()}</strong>
                     </div>
-                    <button className='cart-checkout-button'>Checkout Now</button>
+                    <NavLink to={`/checkout`}>
+                        <button className='cart-checkout-button'>Checkout Now</button>
+                    </NavLink>
                 </div>
             </div>
         </div>

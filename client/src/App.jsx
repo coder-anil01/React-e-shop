@@ -12,6 +12,7 @@ import ProductDetails from './pages/ProductDetails'
 import Login from './component/Login'
 import ScrollToTop from './component/ScrollToTop'
 import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 
 const App = () => {
   <ToastContainer
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/product/:id' element={<ProductDetails/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='/checkout' element={<Checkout/>}/>
 
 {/* ADMIN */}
           <Route path='/admin' element={<Admin/>}>

@@ -23,7 +23,9 @@
 .cart-item-image{
     width: 100px;
 }
-.cart-card-title{}
+.cart-card-title{
+    white-space: nowrap;
+}
 .cart-card-price{
     color: green;
     font-size: 20px;

@@ -8,7 +8,7 @@ import LoginModel from '../component/LoginModel';
 
 const ProductDetails = () => {
     const params = useParams();
-    const [auth] = useAuth();
+    const [auth, setAuth] = useAuth();
     const [product, setProduct] = useState({});
     const [reletedProduct, setReletedProduct] = useState([]);
     const [bigImage, setBigImage] = useState("")
@@ -42,6 +42,9 @@ const ProductDetails = () => {
       try {
         if(auth?.user){
           const {data} = await axios.post('/api/v1/cart/create', {product, user: auth?.user?._id});
+          if(data.new){
+            setAuth({ ...auth, cart: auth?.cart+1 })
+          }
         }else{
           setLoginModel(true);
         }

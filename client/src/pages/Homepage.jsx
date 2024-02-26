@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthProvider';
 import LoginModel from '../component/LoginModel';
 
 const Homepage = () => {
-  const [auth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const [products, setProducts] = useState([]);
   const [loginModel, setLoginModel] = useState(false);
 
@@ -29,10 +29,31 @@ const Homepage = () => {
   const receiveDataFromChild = (data) => {
     setLoginModel(data);
   };
+
+// CART
   const addCart = async(product) => {
     try {
       if(auth?.user){
         const {data} = await axios.post('/api/v1/cart/create', {product, user: auth?.user?._id});
+        if(data.new){
+          setAuth({ ...auth, cart: auth?.cart+1 })
+        }
+      }else{
+        setLoginModel(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+// WISHLIST
+  const addWishlist = async(product) => {
+    try {
+      if(auth?.user){
+        const {data} = await axios.post('/api/v1/wishlist/create', {product, user: auth?.user?._id});
+        if(data.success){
+          setAuth({ ...auth, wishlist: auth?.wishlist+1 })
+        }
       }else{
         setLoginModel(true);
       }
@@ -54,7 +75,7 @@ const Homepage = () => {
               <img className='homepage-item-image' src={p?.image} alt={p?.image} />
             </Link>
             <div className='homepage-item-icons'>
-              <div><FaHeart/></div>
+              <div onClick={()=> addWishlist(p?._id)}><FaHeart/></div>
               <div onClick={()=> addCart(p._id)}><FaCartPlus/></div>
             </div>
             <div className='homepage-item-title'>{p.title.slice(0,20)}</div>

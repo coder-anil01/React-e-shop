@@ -4,6 +4,7 @@ import {FaUser, FaLock} from 'react-icons/fa';
 import axios from 'axios';
 import { ImCross } from "react-icons/im";
 import { useAuth } from '../context/AuthProvider';
+import { IoIosMail } from "react-icons/io";
 
 const LoginModel = (props) => {
 
@@ -65,13 +66,13 @@ const LoginModel = (props) => {
             <input type="text"
               value={name}
               onChange={(e)=> setName(e.target.value)}
-              placeholder='Enter Your Email'
+              placeholder='Enter Your Name'
               className='login-form-input'
               required/>
           </div>
 
           <div className='login-form-items'>
-            <div className='login-form-icon'><FaUser/></div>
+            <div className='login-form-icon'><IoIosMail/></div>
             <input type="text"
               value={email}
               onChange={(e)=> setEmail(e.target.value)}

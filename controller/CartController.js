@@ -1,4 +1,5 @@
 import cartModel from "../model/cartModel.js";
+import wishlistModel from "../model/wishlistModel.js";
 
 export const cartAdd = async(req, res) => {
     const {user, product, quantity} = req.body;
@@ -10,12 +11,14 @@ export const cartAdd = async(req, res) => {
             res.status(200).send({
                 success: true,
                 message: "More Added To Cart",
+
             });
         }else{
             await new cartModel({user, product, quantity}).save();
             res.status(200).send({
                 success: true,
                 message: "Added To Cart",
+                new: true,
             });
         }
     } catch (error) {
@@ -92,10 +95,11 @@ export const navbarData = async(req, res) => {
     console.log(userId);
     try {
         const cartItem = await cartModel.find({user: userId});
-        // const wishlistItem = 
+        const wishlistItem = await wishlistModel.find({user: userId});
         res.status(200).send({
             success: true,
             cartItem: cartItem.length,
+            wishlistItem: wishlistItem.length,
         })
     } catch (error) {
         res.status(500).send({

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navlogo from '../media/navlogo.png';
 import {NavLink} from 'react-router-dom';
-import { BsCartCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import '../style/Navbar.css'
 import { FaSearch } from "react-icons/fa";
@@ -12,16 +11,13 @@ import { useAuth } from '../context/AuthProvider';
 
 const Navbar = () => {
   const [menuopen, setMenuopen] = useState(false);
-  const [auth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const [loginModel, setLoginModel] = useState(false);
-  const [cartItem, setCartItem] = useState(0);
-  const [wishlistItem, setWishlistItem] = useState(0);
 
   const navNotification = async() => {
     try {
       const {data} = await axios.post('/api/v1/cart/navbar', {userId: auth?.user?._id});
-      setCartItem(data?.cartItem);
-      console.log()
+      setAuth({ ...auth, cart: data?.cartItem, wishlist: data?.wishlistItem })
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +26,7 @@ const Navbar = () => {
     if(auth?.user){
       navNotification();
     }
-  },[auth])
+  },[auth?.user])
 
   const receiveDataFromChild = (data) => {
     setLoginModel(data);
@@ -45,8 +41,8 @@ const Navbar = () => {
             <div className='navbar-search-icon'><FaSearch/></div>
         </div>
         <div className='navbar-item-card'>
-            <NavLink to='/cart'><MdShoppingCart/><span className='navbar-item-card-notification'>{cartItem}</span></NavLink>
-            <NavLink to='/cart'><FaHeart/><span className='navbar-item-card-notification'>{wishlistItem}</span></NavLink>
+            <NavLink to='/cart'><MdShoppingCart/><span className='navbar-item-card-notification'>{auth?.cart > 0 ? auth?.cart : 0}</span></NavLink>
+            <NavLink to='/cart'><FaHeart/><span className='navbar-item-card-notification'>{auth?.wishlist ? auth?.wishlist : 0}</span></NavLink>
             <div onClick={()=>setLoginModel(true)}>Login / Signup</div>
         </div>
         {menuopen ? <>

@@ -18,7 +18,7 @@ export const userRegister = async(req, res) => {
             const hashedPassword = await bcrypt.hash(password, 10)
             const address = await addressModel({phone, phonesec, firstat, secndat, city, state, pin}).save();
             const user = await userModel({name, email, password: hashedPassword, answer, deliverat: address._id, role}).save();
-            const token = await JWT.sign({_id: user._id}, jwtsecret);
+            const token = await JWT.sign({user}, jwtsecret);
             res.status(200).send({
                 success: true,
                 message: "Register Successfully",
@@ -58,6 +58,32 @@ export const loginUser = async(req, res) => {
             token,
           })
     } catch (error) {
+        res.status(500).send({
+            success: false,
+            message: "Internal server error",
+            error,
+          });
+    }
+}
+
+
+
+// ADDRESS
+export const addAddress = async(req, res) => {
+    const {userId, phone, phonesec, firstat, secndat, city, pin, state} = req.body;
+    console.log(userId, phone, phonesec, firstat, secndat, city, pin, state);
+    try {
+        const address = await new addressModel({phone, phonesec, firstat, secndat, city, pin, state}).save();
+        const user = await userModel.findByIdAndUpdate(userId, {deliverat: address._id}).populate('deliverat');
+        const token = await JWT.sign({user}, jwtsecret);
+        console.log(user)
+        res.status(200).send({
+            success: true,
+            user,
+            token,
+        })
+    } catch (error) {
+        console.log(error);
         res.status(500).send({
             success: false,
             message: "Internal server error",

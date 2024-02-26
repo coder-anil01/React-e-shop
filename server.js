@@ -6,6 +6,7 @@ import userRoute from './routes/userRoute.js';
 import categoryRoute from './routes/categoryRoute.js';
 import productRoute from './routes/productRoute.js';
 import cartRoute from './routes/cartRoute.js';
+import wishlistRoute from './routes/wishlistRoute.js';
 import connectDb from './db.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -31,6 +32,7 @@ app.use('/api/v1/user', userRoute)
 app.use('/api/v1/category', categoryRoute)
 app.use('/api/v1/product', productRoute)
 app.use('/api/v1/cart', cartRoute)
+app.use('/api/v1/wishlist', wishlistRoute)
 
 app.use('*', function(req, res){
     res.sendFile(path.join(__dirname, "./client/dist/index.html"))
